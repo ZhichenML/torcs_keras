@@ -171,25 +171,25 @@ def playGame(train_indicator=1):    #1 means Train, 0 means simply Run
         save_total_reward.append(total_reward)
         save_toal_step.append(step)
 
-        if np.mod(i, 100) == 0:
-            #filename = "./save_total_reward.pickle"
-            #dirname = os.path.dirname(filename)
-            #if not os.path.exists(filename):
-            #    os.mkdir(filename)
-            #with open(filename,'wb') as f:
-            #    pickle.dump(save_total_reward, f)
+        if np.mod(i+1, 100) == 0:
+            filename = "./Fig/save_total_reward.pickle"
+            dirname = os.path.dirname(filename)
+            if not os.path.exists(dirname):
+                os.makedirs(dirname)
+            with open(filename,'w') as f:
+                pickle.dump(save_total_reward, f)
 
-            #filename = "./save_total_step.pickle"
-            #dirname = os.path.dirname(filename)
-            #if not os.path.exists(filename):
-            #    os.mkdir(filename)
-            #with open(filename,"wb") as f:
-            #    pickle.dump(save_toal_step, f)
+            filename = "./Fig/save_total_step.pickle"
+            dirname = os.path.dirname(filename)
+            if not os.path.exists(dirname):
+                os.makedirs(dirname)
+            with open(filename,"w") as f:
+                pickle.dump(save_toal_step, f)
 
 
             # plot performance
 
-            fig, ax = plt.subplots()
+            '''fig, ax = plt.subplots()
             x= np.arange(len(save_total_reward))
             ax.plot(x, save_total_reward, 'r-', label='Total Reward')
 
@@ -205,7 +205,7 @@ def playGame(train_indicator=1):    #1 means Train, 0 means simply Run
             plt.xlabel("Number of Episodes")
             plt.ylabel("Total Step")
             plt.legend()
-            plt.savefig('./Fig/'+'save_total_step.pdf')
+            plt.savefig('./Fig/'+'save_total_step.pdf')'''
 
 
 
