@@ -18,8 +18,8 @@ import timeit
 
 OU = OU()       #Ornstein-Uhlenbeck Process
 
-def playGame(train_indicator=0):    #1 means Train, 0 means simply Run
-    BUFFER_SIZE = 100000
+def playGame(train_indicator=1):    #1 means Train, 0 means simply Run
+    BUFFER_SIZE = 1000000
     BATCH_SIZE = 32
     GAMMA = 0.99
     TAU = 0.001     #Target Network HyperParameters
