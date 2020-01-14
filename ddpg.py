@@ -25,7 +25,7 @@ OU = OU()       #Ornstein-Uhlenbeck Process
 def playGame(train_indicator=1):    #1 means Train, 0 means simply Run
 
     save_total_reward = []
-    save_toal_step = []
+    save_total_step = []
 
     BUFFER_SIZE = 1000000
     BATCH_SIZE = 32
@@ -169,22 +169,22 @@ def playGame(train_indicator=1):    #1 means Train, 0 means simply Run
         print("")
 
         save_total_reward.append(total_reward)
-        save_toal_step.append(step)
+        save_total_step.append(step)
 
         if np.mod(i+1, 100) == 0:
             filename = "./Fig/save_total_reward.pickle"
             dirname = os.path.dirname(filename)
             if not os.path.exists(dirname):
                 os.makedirs(dirname)
-            with open(filename,'w') as f:
+            with open(filename,'wb') as f:
                 pickle.dump(save_total_reward, f)
 
             filename = "./Fig/save_total_step.pickle"
             dirname = os.path.dirname(filename)
             if not os.path.exists(dirname):
                 os.makedirs(dirname)
-            with open(filename,"w") as f:
-                pickle.dump(save_toal_step, f)
+            with open(filename,"wb") as f:
+                pickle.dump(save_total_step, f)
 
 
             # plot performance
