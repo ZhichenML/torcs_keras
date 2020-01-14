@@ -1,5 +1,6 @@
 from gym_torcs import TorcsEnv
 import numpy as np
+import os
 import random
 import argparse
 from keras.models import model_from_json, Model
@@ -145,10 +146,12 @@ def playGame(train_indicator=1):    #1 means Train, 0 means simply Run
         if np.mod(i, 3) == 0:
             if (train_indicator):
                 print("Now we save model")
+                os.remove("actormodel.h5")
                 actor.model.save_weights("actormodel.h5", overwrite=True)
                 with open("actormodel.json", "w") as outfile:
                     json.dump(actor.model.to_json(), outfile)
 
+                os.remove("criticmodel.h5")
                 critic.model.save_weights("criticmodel.h5", overwrite=True)
                 with open("criticmodel.json", "w") as outfile:
                     json.dump(critic.model.to_json(), outfile)
