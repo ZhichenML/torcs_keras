@@ -171,7 +171,7 @@ def playGame(train_indicator=1):    #1 means Train, 0 means simply Run
         save_total_reward.append(total_reward)
         save_total_step.append(step)
 
-        if np.mod(i+1, 100) == 0:
+        if np.mod(i+1, 10) == 0:
             filename = "./Fig/save_total_reward.pickle"
             dirname = os.path.dirname(filename)
             if not os.path.exists(dirname):
