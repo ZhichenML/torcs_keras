@@ -172,9 +172,15 @@ def playGame(train_indicator=1):    #1 means Train, 0 means simply Run
         save_toal_step.append(step)
 
         if np.mod(i, 100) == 0:
-            with open("./Fig/save_total_reward"+".pickle",'wb') as f:
+            filename = "./Fig/save_total_reward"+".pickle"
+            if not os.path.exists(filename):
+                os.makedirs(filename)
+            with open(filename,'wb') as f:
                 pickle.dump(save_total_reward, f)
 
+            filename = "./Fig/save_total_step"+".pickle"
+            if not os.path.exists(filename):
+                os.makedirs(filename)
             with open("./Fig/save_total_step"+".pickle","wb") as f:
                 pickle.dump(save_toal_step, f)
 
