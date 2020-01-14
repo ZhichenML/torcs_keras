@@ -174,15 +174,15 @@ def playGame(train_indicator=1):    #1 means Train, 0 means simply Run
         if np.mod(i, 100) == 0:
             filename = "save_total_reward.pickle"
             #dirname = os.path.dirname(filename)
-            #if not os.path.exists(dirname):
-            os.mkdir(filename)
+            if not os.path.exists(filename):
+                os.mkdir(filename)
             with open(filename,'wb') as f:
                 pickle.dump(save_total_reward, f)
 
             filename = "save_total_step.pickle"
             #dirname = os.path.dirname(filename)
-            #if not os.path.exists(dirname):
-            os.mkdir(filename)
+            if not os.path.exists(filename):
+                os.mkdir(filename)
             with open(filename,"wb") as f:
                 pickle.dump(save_toal_step, f)
 
