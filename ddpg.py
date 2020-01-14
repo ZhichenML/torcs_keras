@@ -36,7 +36,7 @@ def playGame(train_indicator=1):    #1 means Train, 0 means simply Run
 
     EXPLORE = 100000.
     episode_count = 2000
-    max_steps = 100000
+    max_steps = 10000
     reward = 0
     done = False
     step = 0
@@ -88,6 +88,7 @@ def playGame(train_indicator=1):    #1 means Train, 0 means simply Run
             noise_t = np.zeros([1,action_dim])
             
             a_t_original = actor.model.predict(s_t.reshape(1, s_t.shape[0]))
+
             noise_t[0][0] = train_indicator * max(epsilon, 0) * OU.function(a_t_original[0][0],  0.0 , 0.60, 0.30)
             noise_t[0][1] = train_indicator * max(epsilon, 0) * OU.function(a_t_original[0][1],  0.5 , 1.00, 0.10)
             noise_t[0][2] = train_indicator * max(epsilon, 0) * OU.function(a_t_original[0][2], -0.1 , 1.00, 0.05)
