@@ -17,9 +17,16 @@ from CriticNetwork import CriticNetwork
 from OU import OU
 import timeit
 
+import matplotlib.pyplot as plt
+import pickle
+
 OU = OU()       #Ornstein-Uhlenbeck Process
 
 def playGame(train_indicator=1):    #1 means Train, 0 means simply Run
+
+    save_total_reward = []
+    save_toal_step = []
+
     BUFFER_SIZE = 1000000
     BATCH_SIZE = 32
     GAMMA = 0.99
@@ -161,8 +168,46 @@ def playGame(train_indicator=1):    #1 means Train, 0 means simply Run
         print("Total Step: " + str(step))
         print("")
 
+        save_total_reward.append(total_reward)
+        save_toal_step.append(step)
+
+        if np.mod(i, 100) == 0:
+            with open("./Fig/save_total_reward"+".pickle",'wb') as f:
+                pickle.dump(save_total_reward, f)
+
+            with open("./Fig/save_total_step"+".pickle","wb") as f:
+                pickle.dump(save_toal_step, f)
+
+
+            # plot performance
+
+            fig, ax = plt.subplots()
+            x= np.arange(len(save_total_reward))
+            ax.plot(x, save_total_reward, 'r-', label='Total Reward')
+
+            plt.xlabel("Number of Episodes")
+            plt.ylabel("Total Reward")
+            plt.legend() # 显示图例
+            plt.savefig('./Fig/'+'save_total_reward.pdf')
+
+            fig, ax = plt.subplots()
+            x= np.arange(len(save_toal_step))
+            ax.plot(x, save_toal_step, 'r-', label='Total Step')
+
+            plt.xlabel("Number of Episodes")
+            plt.ylabel("Total Step")
+            plt.legend() # 显示图例
+            plt.savefig('./Fig/'+'save_total_step.pdf')
+
+
+
     env.end()  # This is for shutting down TORCS
     print("Finish.")
 
+
+
+
 if __name__ == "__main__":
+
+
     playGame()
