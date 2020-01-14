@@ -123,7 +123,7 @@ class Client(object):
         self.vision = vision
 
         self.host= u'localhost'
-        self.port= 3001
+        self.port= 3101
         self.sid= u'SCR'
         self.maxEpisodes=1 # "Maximum number of learning episodes to perform"
         self.trackname= u'unknown'
@@ -152,7 +152,7 @@ class Client(object):
         # == Initialize Connection To Server ==
         self.so.settimeout(1)
 
-        n_fail = 5
+        n_fail = 15
         while True:
             # This string establishes track sensor angles! You can customize them.
             #a= "-90 -75 -60 -45 -30 -20 -15 -10 -5 0 5 10 15 20 30 45 60 75 90"
