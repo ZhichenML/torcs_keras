@@ -187,7 +187,7 @@ def playGame(train_indicator=1):    #1 means Train, 0 means simply Run
 
             plt.xlabel("Number of Episodes")
             plt.ylabel("Total Reward")
-            plt.legend() # 显示图例
+            plt.legend()
             plt.savefig('./Fig/'+'save_total_reward.pdf')
 
             fig, ax = plt.subplots()
@@ -196,7 +196,7 @@ def playGame(train_indicator=1):    #1 means Train, 0 means simply Run
 
             plt.xlabel("Number of Episodes")
             plt.ylabel("Total Step")
-            plt.legend() # 显示图例
+            plt.legend()
             plt.savefig('./Fig/'+'save_total_step.pdf')
 
 
