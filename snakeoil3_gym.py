@@ -67,7 +67,7 @@ data_size = 2**17
 # Initialize help messages
 ophelp=  u'Options:\n'
 ophelp+= u' --host, -H <host>    TORCS server host. [localhost]\n'
-ophelp+= u' --port, -p <port>    TORCS port. [3001]\n'
+ophelp+= u' --port, -p <port>    TORCS port. [3101]\n'
 ophelp+= u' --id, -i <id>        ID for server. [SCR]\n'
 ophelp+= u' --steps, -m <#>      Maximum simulation steps. 1 sec ~ 50 steps. [100000]\n'
 ophelp+= u' --episodes, -e <#>   Maximum learning episodes. [1]\n'
