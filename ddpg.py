@@ -183,8 +183,6 @@ def playGame(train_indicator=1):    #1 means Train, 0 means simply Run
             dirname = os.path.dirname(filename)
             if not os.path.exists(dirname):
                 os.makedirs(dirname)
-            if not os.path.exists(filename):
-                os.makedirs(filename)
             with open(filename,"wb") as f:
                 pickle.dump(save_toal_step, f)
 
