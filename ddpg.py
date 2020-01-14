@@ -113,7 +113,8 @@ def playGame(train_indicator=1):    #1 means Train, 0 means simply Run
             rewards = np.asarray([e[2] for e in batch])
             new_states = np.asarray([e[3] for e in batch])
             dones = np.asarray([e[4] for e in batch])
-            y_t = np.asarray([e[1] for e in batch])
+            #y_t = np.asarray([e[1] for e in batch])
+            y_t = np.asarray([e[2] for e in batch])
 
             target_q_values = critic.target_model.predict([new_states, actor.target_model.predict(new_states)])  
            
