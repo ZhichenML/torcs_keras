@@ -62,7 +62,7 @@ def playGame(train_indicator=1):    #1 means Train, 0 means simply Run
     buff = ReplayBuffer(BUFFER_SIZE)    #Create replay buffer
 
     # Generate a Torcs environment
-    env = TorcsEnv(vision=vision, throttle=True,gear_change=False)
+    env = TorcsEnv(vision=vision, throttle=True, gear_change=False)
 
     #Now load the weight
     print("Now we load the weight")
@@ -88,6 +88,7 @@ def playGame(train_indicator=1):    #1 means Train, 0 means simply Run
         s_t = np.hstack((ob.angle, ob.track, ob.trackPos, ob.speedX, ob.speedY,  ob.speedZ, ob.wheelSpinVel/100.0, ob.rpm))
      
         total_reward = 0.
+        step = 0
         for j in range(max_steps):
             loss = 0 
             epsilon -= 1.0 / EXPLORE
